@@ -15,6 +15,8 @@ import org.springframework.boot.ApplicationArguments;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 
+import java.util.List;
+
 /**
  * Spring Boot entry point for the Traffic Light Simulator.
  *
@@ -45,10 +47,23 @@ public class TrafficLightSimulatorApplication implements ApplicationRunner {
             int totalTime = getIntOption(args, "total");
 
             // Optional log level
-            if (args.containsOption("log-level")) {
-                String levelStr = args.getOptionValues("log-level").get(0).toUpperCase();
+            List<String> values = args.getOptionValues("log-level");
+
+            if (values != null && !values.isEmpty()) {
+                // Case: --log-level=DEBUG
+                String levelStr = values.get(0).toUpperCase();
                 setLogLevel(levelStr);
                 logger.info("Log level set to {}", levelStr);
+            } else {
+                // Case: --log-level DEBUG
+                String[] nonOpts = args.getSourceArgs();
+                for (int i = 0; i < nonOpts.length; i++) {
+                    if ("--log-level".equalsIgnoreCase(nonOpts[i]) && i + 1 < nonOpts.length) {
+                        String levelStr = nonOpts[i + 1].toUpperCase();
+                        setLogLevel(levelStr);
+                        logger.info("Log level set to {}", levelStr);
+                    }
+                }
             }
 
             // Validate configuration constraints

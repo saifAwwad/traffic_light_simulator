@@ -46,7 +46,8 @@ Build a CLI that accepts durations for RED, AMBER, GREEN lights and a total simu
 - `README.md` must contain description, architecture overview, constraints table, build/run instructions, example output, and the exact prompt used.
 
 ### Future Enhancements (not implemented)
-- Additional light colors, dynamic configuration, Docker image, etc.
+- Additional light colors, dynamic configuration.
+- Micro service
 
 ### Non‑Functional Requirements
 - No NPEs; all optionals validated.  

@@ -61,16 +61,38 @@ java -jar target/traffic-light-simulator-0.0.1-SNAPSHOT.jar \
 
 - `--log-level` is optional (`DEBUG`, `INFO`, `WARN`, `ERROR`). Default is `INFO`.
 
+## Running the Pre-Built JAR
+If you don’t want to build locally:
+
+```bash
+java -jar dist/traffic-light-simulator-0.0.1-SNAPSHOT.jar  --red 4 --amber 1 --green 10 --total 22
+
+
 ### Example output (INFO level)
 
 ```
-INFO  Starting traffic‑light simulation (total 22 seconds)
-INFO  Second 1: RED
-INFO  Second 2: RED
-INFO  Second 3: RED
-INFO  Second 4: RED
-INFO  Second 5: GREEN
-INFO  Second 6: GREEN
+1: RED
+2: RED
+3: RED
+4: RED
+5: GREEN
+6: GREEN
+7: GREEN
+8: GREEN
+9: GREEN
+10: GREEN
+11: GREEN
+12: GREEN
+13: GREEN
+14: GREEN
+15: AMBER
+16: RED
+17: RED
+18: RED
+19: RED
+20: RED
+21: RED
+22: RED
 ...
 INFO  Simulation completed successfully.
 ```
