@@ -7,6 +7,5 @@ package com.example.trafficlightsimulator.model;
 public enum LightColor {
     RED,
     AMBER,
-    GREEN,
-    BLUE // placeholder for future extensions
+    GREEN // placeholder for future extensions
 }
