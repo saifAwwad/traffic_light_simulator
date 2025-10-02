@@ -71,6 +71,7 @@ java -jar dist/traffic-light-simulator-0.0.1-SNAPSHOT.jar  --red 4 --amber 1 --g
 ### Example output (INFO level)
 
 ```
+```
 1: RED
 2: RED
 3: RED
