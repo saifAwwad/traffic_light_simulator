@@ -101,8 +101,8 @@ docker run --rm traffic-sim \
 
 ## Future enhancements (not implemented)
 
-- Dynamic state loading via `ServiceLoader` for plug‑in lights (e.g., BLUE).
-- REST API to trigger simulations remotely.
+- Dynamic state (e.g., BLUE).
+- Micro Service.
 - Metrics export (Prometheus) for monitoring.
 - Configurable tick interval (e.g., faster simulation for testing).
 
