@@ -87,11 +87,24 @@ public class TrafficLightSimulatorApplication implements ApplicationRunner {
      *
      * @throws IllegalArgumentException if the option is missing.
      */
+    // Modified by Roo Code AI on 2025-10-02 with model: gpt-oss-120b
     private int getIntOption(ApplicationArguments args, String name) {
-        if (!args.containsOption(name) || args.getOptionValues(name).isEmpty()) {
-            throw new IllegalArgumentException("Missing required argument: --" + name);
+        // First try Spring Boot option parsing
+        if (args.containsOption(name) && !args.getOptionValues(name).isEmpty()) {
+            return Integer.parseInt(args.getOptionValues(name).get(0));
         }
-        return Integer.parseInt(args.getOptionValues(name).get(0));
+        // Fallback: manually parse raw args for formats like "--red 4" or "--red=4"
+        String[] source = args.getSourceArgs();
+        for (int i = 0; i < source.length; i++) {
+            if (source[i].equals("--" + name) && i + 1 < source.length) {
+                return Integer.parseInt(source[i + 1]);
+            }
+            if (source[i].startsWith("--" + name + "=")) {
+                return Integer.parseInt(source[i].substring(("--" + name + "=").length()));
+            }
+        }
+        // If still not found, throw the original exception
+        throw new IllegalArgumentException("Missing required argument: --" + name);
     }
 
     /**
